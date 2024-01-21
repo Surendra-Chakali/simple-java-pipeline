@@ -3,8 +3,6 @@ pipeline{
 		label 'linux'
 	}
 
-	tools{}
-
 	stages{
 		stage('Cloning Repo'){
 			steps{
