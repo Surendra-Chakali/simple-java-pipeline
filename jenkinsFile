@@ -1,0 +1,17 @@
+pipeline{
+	agent agent1
+
+	tools{}
+
+	stages{
+		stage('Cloning Repo'){
+			steps{
+				git branch: 'main', url: 'https://github.com/Surendra-Chakali/simple-java.git'
+			}
+		}
+
+		stage('Build jar file'){
+			sh 'mvn clean package'
+		}
+	}
+}
