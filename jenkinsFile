@@ -3,6 +3,10 @@ pipeline{
 		label 'linux'
 	}
 
+	tools{
+		maven 'mvn1'
+	}
+
 	stages{
 		stage('Cloning Repo'){
 			steps{
