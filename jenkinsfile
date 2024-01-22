@@ -10,7 +10,7 @@ pipeline{
 	stages{
 		stage('Cloning Repo'){
 			steps{
-				git branch: 'main', url: 'https://github.com/Surendra-Chakali/simple-java.git'
+				git branch: 'main', url: 'https://github.com/Surendra-Chakali/simple-java-pipeline.git'
 			}
 		}
 
