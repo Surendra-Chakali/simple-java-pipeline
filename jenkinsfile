@@ -1,0 +1,19 @@
+pipeline{
+    agent any
+    tools{
+        mvn 'maven1'
+    }
+
+    stages{
+        stage('Cloning Repo'){
+            steps{
+                git branch: 'main', url: 'https://github.com/Surendra-Chakali/simple-java-pipeline.git'
+            }
+        }
+        stage('Generate artifact'){
+            steps{
+                sh 'cd my-app && mvn clean package'
+            }
+        }
+    }
+}
