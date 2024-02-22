@@ -15,5 +15,32 @@ pipeline{
                 sh 'cd my-app && mvn clean package'
             }
         }
+        stage('Trivy FS Scan'){
+            steps{
+                sh 'trivy fs .'
+            } 
+        }
+        stage('Build Image'){
+            steps{
+                script{
+                    sh 'docker build -t samplejavaapp:latest .'
+                    sh 'docker tag samplejavaapp:latest surendra548/sample-java-application:latest'
+                }
+            }
+        }
+        stage('Trivy Image Scan'){
+            steps{
+                sh 'trivy image surendra548/sample-java-application:latest'
+            }
+        }
+        stage('Push docker image'){
+            steps{
+                script{
+                    withDockerRegistry('dockercred') {
+                        sh 'docker push surendra548/sample-java-application:latest'
+                    }
+                }
+            }
+        }
     }
 }
