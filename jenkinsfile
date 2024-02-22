@@ -36,7 +36,7 @@ pipeline{
         stage('Push docker image'){
             steps{
                 script{
-                    withDockerRegistry('dockercred') {
+                    withDockerRegistry(credentialsId:'dockercred') {
                         sh 'docker push surendra548/sample-java-application:latest'
                     }
                 }
