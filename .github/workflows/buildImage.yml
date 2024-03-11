@@ -17,7 +17,7 @@ jobs:
           distribution: 'temurin'
           cache: maven
       - name: Build Image
-        run: mvn package
+        run: cd my-app && mvn package
 
 
             
