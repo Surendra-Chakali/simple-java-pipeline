@@ -7,6 +7,7 @@ jobs:
         - name: Cloning repo
           uses: actions/checkout@v3
     Install:
+      needs: Clone
       runs-on: ubuntu-latest
       steps:
       - name: Install JDK17
@@ -14,4 +15,9 @@ jobs:
         with:
           java-version: '17'
           distribution: 'temurin'
+          cache: maven
+      - name: Build Image
+        run: mvn package
+
+
             
